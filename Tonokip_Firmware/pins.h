@@ -237,14 +237,16 @@
 #define TEMP_0_PIN          2   // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!!
 #define TEMP_1_PIN          1   // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!!
 
-// SPI for Max6675 Thermocouple:
 
+#ifndef SDSUPPORT
+
+// SPI for Max6675 Thermocouple (these pins are defined in the SD library if building with SD support).
 #define SCK_PIN             52
 #define MISO_PIN            50
 #define MOSI_PIN            51
 #define SS_PIN              53
 
-
+#endif
 
 
 /****************************************************************************************

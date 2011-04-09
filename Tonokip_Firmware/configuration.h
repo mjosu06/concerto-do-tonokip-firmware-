@@ -6,7 +6,7 @@
 #define MOTHERBOARD 3 // ATMEGA168 0, SANGUINO 1, MOTHERBOARD = 2, MEGA 3, ATMEGA328 4
 
 //Comment out to disable SD support
-#define SDSUPPORT 1
+//#define SDSUPPORT 1
 
 //Acceleration settings
 float full_velocity_units = 10.0; // the units between minimum and G1 move feedrate
@@ -29,10 +29,10 @@ float min_units_per_second = 35.0; // the minimum feedrate
 // units are in millimeters or whatever length unit you prefer: inches,football-fields,parsecs etc
 
 //Calibration variables
-float x_steps_per_unit = 80.376;
-float y_steps_per_unit = 80.376;
-float z_steps_per_unit = 3200/1.25;
-float e_steps_per_unit = 16;
+float x_steps_per_unit = 5.0*16;
+float y_steps_per_unit = 5.0*16;
+float z_steps_per_unit = 160*16;
+float e_steps_per_unit = 43*16;
 float max_feedrate = 18000;
 
 //float x_steps_per_unit = 10.047;
@@ -53,10 +53,10 @@ const bool DISABLE_Y = false;
 const bool DISABLE_Z = true;
 const bool DISABLE_E = false;
 
-const bool INVERT_X_DIR = false;
+const bool INVERT_X_DIR = true;
 const bool INVERT_Y_DIR = false;
 const bool INVERT_Z_DIR = true;
-const bool INVERT_E_DIR = false;
+const bool INVERT_E_DIR = true;
 
 //Thermistor settings:
 

@@ -925,6 +925,63 @@ inline void  enable_y() { if(Y_ENABLE_PIN > -1) digitalWrite(Y_ENABLE_PIN, Y_ENA
 inline void  enable_z() { if(Z_ENABLE_PIN > -1) digitalWrite(Z_ENABLE_PIN, Z_ENABLE_ON); }
 inline void  enable_e() { if(E_ENABLE_PIN > -1) digitalWrite(E_ENABLE_PIN, E_ENABLE_ON); }
 
+int next_read_time = 0;
+int max6675_temp = 2000;
+
+inline int read_max6675()
+{
+  if (next_read_time) 
+  {
+    next_read_time--;
+    return max6675_temp;
+  }
+
+  max6675_temp = 0;
+    
+  #ifdef	PRR
+    PRR &= ~(1<<PRSPI);
+  #elif defined PRR0
+    PRR0 &= ~(1<<PRSPI);
+  #endif
+  
+  SPCR = (1<<MSTR) | (1<<SPE) | (1<<SPR0);
+  
+  // enable TT_MAX6675
+  digitalWrite(SS_PIN, 0);
+  
+  // ensure 100ns delay - a bit extra is fine
+  delay(1);
+  
+  // read MSB
+  SPDR = 0;
+  for (;(SPSR & (1<<SPIF)) == 0;);
+  max6675_temp = SPDR;
+  max6675_temp <<= 8;
+  
+  // read LSB
+  SPDR = 0;
+  for (;(SPSR & (1<<SPIF)) == 0;);
+  max6675_temp |= SPDR;
+  
+  // disable TT_MAX6675
+  digitalWrite(SS_PIN, 1);
+
+  if (max6675_temp & 4) 
+  {
+    // thermocouple open
+    max6675_temp = 2000;
+  }
+  else 
+  {
+    max6675_temp = max6675_temp >> 3;
+  }
+
+  // this number depends on how frequently temp_sensor_tick is called. the MAX6675 can give a reading every 0.22s, so set this to about 250ms
+  next_read_time = 1700;
+
+  return max6675_temp;
+}
+
 inline void manage_heater()
 {
   #ifdef HEATER_USES_THERMISTOR
