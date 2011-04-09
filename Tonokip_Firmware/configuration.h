@@ -12,8 +12,16 @@
 float full_velocity_units = 10.0; // the units between minimum and G1 move feedrate
 float min_units_per_second = 35.0; // the minimum feedrate
 
-// THERMOCOUPLE SUPPORT UNTESTED... USE WITH CAUTION!!!!
-const bool USE_THERMISTOR = true; //Set to false if using thermocouple
+// AD595 THERMOCOUPLE SUPPORT UNTESTED... USE WITH CAUTION!!!!
+
+// Select one of these only to define how the nozzle temp is read.
+//#define HEATER_USES_THERMISTOR
+//#define HEATER_USES_AD595
+#define HEATER_USES_MAX6675
+
+// Select one of these only to define how the bed temp is read.
+#define BED_USES_THERMISTOR
+//#define BED_USES_AD595
 
 // Calibration formulas
 // e_extruded_steps_per_mm = e_feedstock_steps_per_mm * (desired_extrusion_diameter^2 / feedstock_diameter^2)
