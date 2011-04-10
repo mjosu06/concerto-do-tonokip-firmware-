@@ -190,6 +190,19 @@ void setup()
 
   if(HEATER_0_PIN > -1) pinMode(HEATER_0_PIN,OUTPUT);
   
+#ifdef HEATER_USES_MAX6675
+  digitalWrite(SCK_PIN,0);
+  pinMode(SCK_PIN,OUTPUT);
+
+  digitalWrite(MOSI_PIN,1);
+  pinMode(MOSI_PIN,OUTPUT);
+
+  digitalWrite(MISO_PIN,1);
+  pinMode(MISO_PIN,INPUT);
+
+  digitalWrite(SS_PIN,1);
+  pinMode(SS_PIN,OUTPUT);
+#endif  
  
 #ifdef SDSUPPORT
 
@@ -925,16 +938,17 @@ inline void  enable_y() { if(Y_ENABLE_PIN > -1) digitalWrite(Y_ENABLE_PIN, Y_ENA
 inline void  enable_z() { if(Z_ENABLE_PIN > -1) digitalWrite(Z_ENABLE_PIN, Z_ENABLE_ON); }
 inline void  enable_e() { if(E_ENABLE_PIN > -1) digitalWrite(E_ENABLE_PIN, E_ENABLE_ON); }
 
-int next_read_time = 0;
+#define HEAT_INTERVAL 250
+
+unsigned long max6675_previous_millis = 0;
 int max6675_temp = 2000;
 
 inline int read_max6675()
 {
-  if (next_read_time) 
-  {
-    next_read_time--;
+  if (millis() - max6675_previous_millis < HEAT_INTERVAL) 
     return max6675_temp;
-  }
+  
+  max6675_previous_millis = millis();
 
   max6675_temp = 0;
     
@@ -975,9 +989,6 @@ inline int read_max6675()
   {
     max6675_temp = max6675_temp >> 3;
   }
-
-  // this number depends on how frequently temp_sensor_tick is called. the MAX6675 can give a reading every 0.22s, so set this to about 250ms
-  next_read_time = 1700;
 
   return max6675_temp;
 }
