@@ -1020,7 +1020,9 @@ inline void manage_heater()
   }
   
   #ifdef BED_USES_THERMISTOR
+
     current_bed_raw = analogRead(TEMP_1_PIN);                  
+
     // If using thermistor, when the heater is colder than targer temp, we get a higher analog reading than target, 
     // this switches it up so that the reading appears lower than target for the control logic.
     current_bed_raw = 1023 - current_bed_raw;
@@ -1111,6 +1113,8 @@ float analog2temp(int raw) {
   #ifdef HEATER_USES_THERMISTOR
     int celsius = 0;
     byte i;
+    
+    raw = 1023 - raw;
 
     for (i=1; i<NUMTEMPS; i++)
     {
@@ -1142,6 +1146,8 @@ float analog2tempBed(int raw) {
   #ifdef BED_USES_THERMISTOR
     int celsius = 0;
     byte i;
+
+    raw = 1023 - raw;
 
     for (i=1; i<NUMTEMPS; i++)
     {
