@@ -285,7 +285,109 @@
 
 
 
-
+#elif MOTHERBOARD == 5
+/****************************************************************************************
+  * RepRap Motherboard with RS485 extruders
+  *
+  ****************************************************************************************/
+  
+  #ifndef __AVR_ATmega644P__
+  #error Oops!  Make sure you have 'Sanguino' selected from the 'Tools -> Boards' menu.
+  #endif
+  
+  #ifdef GEN6
+    /****************************************************************************************
+    * Generation 6 electronics RepRap Motherboard with one onboard extruder and external RS485 extruders
+    *
+    ****************************************************************************************/
+    
+    //x axis pins
+    #define X_STEP_PIN      15
+    #define X_DIR_PIN       18
+    #define X_ENABLE_PIN    19
+    #define X_MIN_PIN       20
+    #define X_MAX_PIN       -1
+    
+    //y axis pins
+    #define Y_STEP_PIN      23
+    #define Y_DIR_PIN       22
+    #define Y_ENABLE_PIN    24
+    #define Y_MIN_PIN       25
+    #define Y_MAX_PIN       -1
+    
+    //z axis pins
+    #define Z_STEP_PIN      27
+    #define Z_DIR_PIN       28
+    #define Z_ENABLE_PIN    29
+    #define Z_MIN_PIN       30
+    #define Z_MAX_PIN       -1
+    
+    //extruder pins
+    #define E_STEP_PIN      4     //Edited @ EJE Electronics 20100715
+    #define E_DIR_PIN       2     //Edited @ EJE Electronics 20100715
+    #define E_ENABLE_PIN    3     //Added @ EJE Electronics 20100715
+    #define TEMP_0_PIN      5     //changed @ rkoeppl 20110410
+    #define HEATER_0_PIN    14    //changed @ rkoeppl 20110410
+    #define HEATER_1_PIN    -1    //changed @ rkoeppl 20110410
+    #define LED_PIN         -1    //changed @ rkoeppl 20110410
+    #define TEMP_1_PIN      -1    //changed @ rkoeppl 20110410
+    #define FAN_PIN         -1    //changed @ rkoeppl 20110410
+    #define PS_ON_PIN       -1    //changed @ rkoeppl 20110410
+    //our pin for debugging.
+    
+    #define DEBUG_PIN        0
+    
+    //our RS485 pins
+    #define TX_ENABLE_PIN	12
+    #define RX_ENABLE_PIN	13
+    
+  #else //No gen6
+    /****************************************************************************************
+    * Normal RepRap Motherboard with RS485 extruders
+    *
+    ****************************************************************************************/
+      
+    //x axis pins
+    #define X_STEP_PIN      15
+    #define X_DIR_PIN       18
+    #define X_ENABLE_PIN    19
+    #define X_MIN_PIN       20
+    #define X_MAX_PIN       21
+    
+    //y axis pins
+    #define Y_STEP_PIN      23
+    #define Y_DIR_PIN       22
+    #define Y_ENABLE_PIN    24
+    #define Y_MIN_PIN       25
+    #define Y_MAX_PIN       26
+    
+    //z axis pins
+    #define Z_STEP_PIN      27
+    #define Z_DIR_PIN       28
+    #define Z_ENABLE_PIN    29
+    #define Z_MIN_PIN       30
+    #define Z_MAX_PIN       31
+    
+    #define E_STEP_PIN      17
+    #define E_DIR_PIN       16
+    
+    //our pin for debugging.
+    
+    #define DEBUG_PIN        0
+ 
+    //our SD card pins
+    #define SD_CARD_WRITE    2
+    #define SD_CARD_DETECT   3
+    #define SD_CARD_SELECT   4
+    
+    //our RS485 pins
+    #define TX_ENABLE_PIN	12
+    #define RX_ENABLE_PIN	13
+    
+    //pin for controlling the PSU.
+    #define PS_ON_PIN       14
+  #endif    
+  
 #else
 
 #error Unknown MOTHERBOARD value in parameters.h
