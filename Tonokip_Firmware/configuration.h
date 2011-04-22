@@ -9,8 +9,8 @@
 //#define SDSUPPORT 1
 
 //Acceleration settings
-float full_velocity_units = 10.0; // the units between minimum and G1 move feedrate
-float min_units_per_second = 35.0; // the minimum feedrate
+float full_velocity_units = 3.0; // the units between minimum and G1 move feedrate
+float min_units_per_second = 15.0; // the minimum feedrate
 
 // THERMOCOUPLE SUPPORT UNTESTED... USE WITH CAUTION!!!!
 const bool USE_THERMISTOR = true; //Set to false if using thermocouple
@@ -33,10 +33,10 @@ const bool USE_THERMISTOR = true; //Set to false if using thermocouple
 // units are in millimeters or whatever length unit you prefer: inches,football-fields,parsecs etc
 
 //Calibration variables
-float x_steps_per_unit = 40.000;
-float y_steps_per_unit = 40.000;
-float z_steps_per_unit = 3369.525;
-float e_steps_per_unit = 442.302;
+float x_steps_per_unit = 66.685; 
+float y_steps_per_unit = 66.685;
+float z_steps_per_unit = 1711.051;
+float e_steps_per_unit = 390.23965; //30.3 for SF39
 float max_feedrate = 200000; //mmm, acceleration!
 
 //float x_steps_per_unit = 10.047;
@@ -58,8 +58,8 @@ const bool DISABLE_Z = true;
 const bool DISABLE_E = false;
 
 const bool INVERT_X_DIR = false;
-const bool INVERT_Y_DIR = true;
-const bool INVERT_Z_DIR = false;
+const bool INVERT_Y_DIR = false;
+const bool INVERT_Z_DIR = true;
 const bool INVERT_E_DIR = false;
 
 //Thermistor settings:
@@ -83,14 +83,14 @@ const bool INVERT_E_DIR = false;
 
 //Endstop Settings
 #define ENDSTOPPULLUPS 1
-const bool ENDSTOPS_INVERTING = true;
+const bool ENDSTOPS_INVERTING = false;
 const bool min_software_endstops = false; //If true, axis won't move to coordinates less than zero.
 const bool max_software_endstops = true;  //If true, axis won't move to coordinates greater than the defined lengths below.
-const int X_MAX_LENGTH = 200;
-const int Y_MAX_LENGTH = 200;
-const int Z_MAX_LENGTH = 100;
+const int X_MAX_LENGTH = 240;
+const int Y_MAX_LENGTH = 240;
+const int Z_MAX_LENGTH = 240;
 
-#define BAUDRATE 57600
+#define BAUDRATE 115200
 
 
 

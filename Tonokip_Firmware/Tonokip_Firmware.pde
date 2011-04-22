@@ -1,4 +1,3 @@
-
 // Tonokip RepRap firmware rewrite based off of Hydra-mmm firmware.
 // Licence: GPL
 
@@ -510,7 +509,7 @@ inline void process_commands()
         */
         #define X_TIME_FOR_MOVE ((float)x_steps_to_take / (x_steps_per_unit*feedrate/60000000))
         #define Y_TIME_FOR_MOVE ((float)y_steps_to_take / (y_steps_per_unit*feedrate/60000000))
-        #define Z_TIME_FOR_MOVE (((float)z_steps_to_take / (z_steps_per_unit*feedrate/60000000)) * 85)
+        #define Z_TIME_FOR_MOVE ((float)z_steps_to_take / (z_steps_per_unit*feedrate/60000000))
         #define E_TIME_FOR_MOVE ((float)e_steps_to_take / (e_steps_per_unit*feedrate/60000000))
         
         time_for_move = max(X_TIME_FOR_MOVE,Y_TIME_FOR_MOVE);
