@@ -246,16 +246,7 @@
 #define TEMP_1_PIN          1   // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!!
 
 
-#ifndef SDSUPPORT
 
-// SPI for Max6675 Thermocouple (these pins are defined in the SD library if building with SD support).
-#define SCK_PIN             52
-#define MISO_PIN            50
-#define MOSI_PIN            51
-#define MAX6675_SS              53
-#else
-#define MAX6675_SS              49
-#endif
 
 
 
@@ -361,7 +352,7 @@
 
 #else
 
-#error Unknown MOTHERBOARD value in configuration.h
+#error Unknown MOTHERBOARD value in parameters.h
 
 #endif
 
