@@ -1205,7 +1205,7 @@ float temp2analog(int celsius) {
   #ifdef HEATER_USES_THERMISTOR
     int raw = 0;
     byte i;
-    
+//  raw = 1023 - raw;   // uncomment if you have disabled Smoothing
     for (i=1; i<NUMTEMPS; i++)
     {
       if (temptable[i][1] < celsius)
