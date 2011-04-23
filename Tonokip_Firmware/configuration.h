@@ -17,6 +17,7 @@ float min_constant_speed_units = 5.0; // the minimum units (distance) of a move 
 
 // AD595 THERMOCOUPLE SUPPORT UNTESTED... USE WITH CAUTION!!!!
 
+
 //PID settings:
 //Uncomment the following line to enable PID support.
 #define PIDTEMP 1
@@ -89,14 +90,15 @@ const bool INVERT_E_DIR = false;
 #define BNUMTEMPS NUMTEMPS
 #define bedtemptable temptable
 
-#define SMOOTHENABLE // Uncomment if you want smoothing enabled fo the Extruder temperature control.  Enable if using Gen6 Electronics.  If you //disable Smoothing You have to uncomment: about line 1208   //raw = 1023 - raw;
+
+#define SMOOTHENABLE // Uncomment if you want smoothing enabled fo the Extruder temperature control.  Enable if using Gen6 Electronics.  If you disable Smoothing You have to uncomment:// about line 1208 //raw = 1023 - raw;
 #define filterSamples   25   // Defines How many samples should be taken for smoothing, filterSamples should  be an odd number, no smaller than 3
 #define cutOff 30 // percentage of values that deviate from the average that should be omitted.
 
 
 //Endstop Settings
 #define ENDSTOPPULLUPS 1
-const bool ENDSTOPS_INVERTING = false;
+const bool ENDSTOPS_INVERTING = true;
 const bool min_software_endstops = false; //If true, axis won't move to coordinates less than zero.
 const bool max_software_endstops = true;  //If true, axis won't move to coordinates greater than the defined lengths below.
 const int X_MAX_LENGTH = 220;
@@ -104,6 +106,7 @@ const int Y_MAX_LENGTH = 220;
 const int Z_MAX_LENGTH = 100;
 
 #define BAUDRATE 57600
+
 
 
 
