@@ -89,7 +89,7 @@ const bool INVERT_E_DIR = false;
 #define BNUMTEMPS NUMTEMPS
 #define bedtemptable temptable
 
-#define SMOOTHENABLE // Uncomment if you want smoothing enabled fo the Extruder temperature control.  Enable if using Gen6 Electronics
+#define SMOOTHENABLE // Uncomment if you want smoothing enabled fo the Extruder temperature control.  Enable if using Gen6 Electronics.  If you //disable Smoothing You have to uncomment: about line 1208   //raw = 1023 - raw;
 #define filterSamples   25   // Defines How many samples should be taken for smoothing, filterSamples should  be an odd number, no smaller than 3
 #define cutOff 30 // percentage of values that deviate from the average that should be omitted.
 
