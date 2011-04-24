@@ -5,21 +5,18 @@
 // PLEASE VERIFY PIN ASSIGNMENTS FOR YOUR CONFIGURATION!!!!!!!
 #define MOTHERBOARD 5 // ATMEGA168 = 0, SANGUINO = 1, MOTHERBOARD = 2, MEGA/RAMPS = 3, ATMEGA328 = 4, Gen6 = 5
 
-
-
 //Comment out to disable SD support
 //#define SDSUPPORT 1
 
 //Acceleration settings
-float full_velocity_units = 10; // the units between minimum and G1 move feedrate
-float min_units_per_second = 40.0; // the minimum feedrate
-float min_constant_speed_units = 5.0; // the minimum units (distance) of a move that must be met to qualify for acceleration(otehrwise the minimum feedrate is used)
+float full_velocity_units = 10.0; // the units between minimum and G1 move feedrate
+float min_units_per_second = 35.0; // the minimum feedrate
 
-// AD595 THERMOCOUPLE SUPPORT UNTESTED... USE WITH CAUTION!!!!
-
+// THERMOCOUPLE SUPPORT UNTESTED... USE WITH CAUTION!!!!
+const bool USE_THERMISTOR = true; //Set to false if using thermocouple
 
 //PID settings:
-//Uncomment the following line to enable PID support.
+//Uncomment the following line to enable PID support. This is untested and could be disastrous. Be careful.
 #define PIDTEMP 1
 #ifdef PIDTEMP
 #define PID_MAX 255 // limits current to nozzle
@@ -29,14 +26,6 @@ float min_constant_speed_units = 5.0; // the minimum units (distance) of a move 
 #define PID_DGAIN 60 //100 is 1.0
 #endif
 
-// Select one of these only to define how the nozzle temp is read.
-#define HEATER_USES_THERMISTOR
-//#define HEATER_USES_AD595
-//#define HEATER_USES_MAX6675
-
-// Select one of these only to define how the bed temp is read.
-#define BED_USES_THERMISTOR
-//#define BED_USES_AD595
 
 // Calibration formulas
 // e_extruded_steps_per_mm = e_feedstock_steps_per_mm * (desired_extrusion_diameter^2 / feedstock_diameter^2)
@@ -44,8 +33,8 @@ float min_constant_speed_units = 5.0; // the minimum units (distance) of a move 
 // units are in millimeters or whatever length unit you prefer: inches,football-fields,parsecs etc
 
 //Calibration variables
-float x_steps_per_unit = 40.188;
-float y_steps_per_unit = 40.188;
+float x_steps_per_unit = 40.000;
+float y_steps_per_unit = 40.000;
 float z_steps_per_unit = 3369.525;
 float e_steps_per_unit = 442.302;
 float max_feedrate = 200000; //mmm, acceleration!
@@ -89,11 +78,7 @@ const bool INVERT_E_DIR = false;
 #include "ThermistorTable_mendelparts.h"
 #define BNUMTEMPS NUMTEMPS
 #define bedtemptable temptable
-
-
-#define SMOOTHENABLE // Uncomment if you want smoothing enabled fo the Extruder temperature control.  Enable if using Gen6 Electronics.  If you disable Smoothing You have to uncomment:// about line 1208 //raw = 1023 - raw;
-#define filterSamples   25   // Defines How many samples should be taken for smoothing, filterSamples should  be an odd number, no smaller than 3
-#define cutOff 30 // percentage of values that deviate from the average that should be omitted.
+#define filterSamples   25              // filterSamples should  be an odd number, no smaller than 3
 
 
 //Endstop Settings
@@ -101,12 +86,11 @@ const bool INVERT_E_DIR = false;
 const bool ENDSTOPS_INVERTING = true;
 const bool min_software_endstops = false; //If true, axis won't move to coordinates less than zero.
 const bool max_software_endstops = true;  //If true, axis won't move to coordinates greater than the defined lengths below.
-const int X_MAX_LENGTH = 220;
-const int Y_MAX_LENGTH = 220;
+const int X_MAX_LENGTH = 200;
+const int Y_MAX_LENGTH = 200;
 const int Z_MAX_LENGTH = 100;
 
 #define BAUDRATE 57600
-
 
 
 
