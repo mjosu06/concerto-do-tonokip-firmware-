@@ -9,14 +9,14 @@
 //#define SDSUPPORT 1
 
 //Acceleration settings
-float full_velocity_units = 10.0; // the units between minimum and G1 move feedrate
-float min_units_per_second = 35.0; // the minimum feedrate
+float full_velocity_units = 10.0; // (desired max speed - min_units_per_second)/10
+float min_units_per_second = 35.0; // the feedrate acceleration starts. (use your previous printing feedrate)
 
 // THERMOCOUPLE SUPPORT UNTESTED... USE WITH CAUTION!!!!
 const bool USE_THERMISTOR = true; //Set to false if using thermocouple
 
 //PID settings:
-//Uncomment the following line to enable PID support. This is untested and could be disastrous. Be careful.
+//Comment the following line to disable PID support. If You have a pretty standard heater and extruder barrel you should not need to change that but for reference: http://en.wikipedia.org/wiki/PID_controller //
 #define PIDTEMP 1
 #ifdef PIDTEMP
 #define PID_MAX 255 // limits current to nozzle
@@ -36,7 +36,7 @@ const bool USE_THERMISTOR = true; //Set to false if using thermocouple
 float x_steps_per_unit = 40.000;
 float y_steps_per_unit = 40.000;
 float z_steps_per_unit = 3369.525;
-float e_steps_per_unit = 442.302;
+float e_steps_per_unit = 442.302;  // If using SF >=40 filament entering the extruder
 float max_feedrate = 200000; //mmm, acceleration!
 
 //float x_steps_per_unit = 10.047;
