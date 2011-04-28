@@ -702,7 +702,7 @@ inline void process_commands()
         if(code_seen('Z')) z_steps_per_unit = code_value();
         if(code_seen('E')) e_steps_per_unit = code_value();
         break;
-      case 115: / M115
+      case 115: // M115
         Serial.println("FIRMWARE_NAME:Klimentkip FIRMWARE_URL:http%%3A/github.com/kliment/Klimentkip/ PROTOCOL_VERSION:1.0 MACHINE_TYPE:Mendel EXTRUDER_COUNT:1");
         break;
     }
