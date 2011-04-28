@@ -9,14 +9,16 @@
 //#define SDSUPPORT 1
 
 //Acceleration settings
-float full_velocity_units = 10.0; // (desired max speed - min_units_per_second)/10
-float min_units_per_second = 35.0; // the feedrate acceleration starts. (use your previous printing feedrate)
+float full_velocity_units = 6; // (desired max speed - min_units_per_second)/10
+float min_units_per_second = 35; // the feedrate acceleration starts. (use your previous printing feedrate)
+float min_constant_speed_units = 0; // qualifying distance for acceleration.  Below this distance min feedrate is used.
+float travel_move_full_velocity_units = 6; // used for travel moves when Extruder stepper is not moving
 
 // THERMOCOUPLE SUPPORT UNTESTED... USE WITH CAUTION!!!!
 const bool USE_THERMISTOR = true; //Set to false if using thermocouple
 
 //PID settings:
-//Comment the following line to disable PID support. If You have a pretty standard heater and extruder barrel you should not need to change that but for reference: http://en.wikipedia.org/wiki/PID_controller //
+//Uncomment the following line to enable PID support. This is untested and could be disastrous. Be careful.
 #define PIDTEMP 1
 #ifdef PIDTEMP
 #define PID_MAX 255 // limits current to nozzle
@@ -25,6 +27,20 @@ const bool USE_THERMISTOR = true; //Set to false if using thermocouple
 #define PID_IGAIN 95 //100 is 1.0
 #define PID_DGAIN 60 //100 is 1.0
 #endif
+
+//Experimental temperature smoothing - only uncomment this if your temp readings are noisy
+		
+#define SMOOTHING 1
+#define SMOOTHFACTOR 16 //best to use a power of two here - determines how many values are averaged together by the smoothing algorithm
+
+// Select one of these only to define how the nozzle temp is read.
+#define HEATER_USES_THERMISTOR
+//#define HEATER_USES_AD595
+//#define HEATER_USES_MAX6675
+
+// Select one of these only to define how the bed temp is read.
+#define BED_USES_THERMISTOR
+//#define BED_USES_AD595
 
 
 // Calibration formulas
@@ -36,7 +52,7 @@ const bool USE_THERMISTOR = true; //Set to false if using thermocouple
 float x_steps_per_unit = 40.000;
 float y_steps_per_unit = 40.000;
 float z_steps_per_unit = 3369.525;
-float e_steps_per_unit = 442.302;  // If using SF >=40 filament entering the extruder
+float e_steps_per_unit = 442.302;
 float max_feedrate = 200000; //mmm, acceleration!
 
 //float x_steps_per_unit = 10.047;
@@ -78,7 +94,7 @@ const bool INVERT_E_DIR = false;
 #include "ThermistorTable_mendelparts.h"
 #define BNUMTEMPS NUMTEMPS
 #define bedtemptable temptable
-#define filterSamples   25              // filterSamples should  be an odd number, no smaller than 3
+#define filterSamples   33              // filterSamples should  be an odd number, no smaller than 3
 
 
 //Endstop Settings
