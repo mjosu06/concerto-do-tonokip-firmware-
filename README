@@ -1,3 +1,11 @@
+THIS FIRMWARE VERSION IS NOW DEPRECATED. 
+ALL FURTHER DEVELOPMENT IS HAPPENING UNDER THE NEW NAME Sprinter
+PLEASE SWITCH TO https://github.com/kliment/Sprinter IF YOU ARE USING THIS.
+THERE WILL BE NO MORE COMMITS TO THIS REPOSITORY.
+
+
+
+
 This is a firmware for RAMPS and other reprap single-processor electronics setups. It supports printing from SD card, active heatbed control, and ATmega internal pullups.
 
 This work is licensed under the GNU GPL v3 or (at the user's discretion) any later version.
