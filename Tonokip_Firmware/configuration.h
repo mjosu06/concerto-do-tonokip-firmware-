@@ -3,7 +3,7 @@
 
 // NO RS485/EXTRUDER CONTROLLER SUPPORT
 // PLEASE VERIFY PIN ASSIGNMENTS FOR YOUR CONFIGURATION!!!!!!!
-#define MOTHERBOARD 3 // ATMEGA168 = 0, SANGUINO = 1, MOTHERBOARD = 2, MEGA/RAMPS = 3, ATMEGA328 = 4, Gen6 = 5, Sanguinololu = 6
+#define MOTHERBOARD 4 // ATMEGA168 = 0, SANGUINO = 1, MOTHERBOARD = 2, MEGA/RAMPS = 3, ATMEGA328 = 4, Gen6 = 5, Sanguinololu = 6
 
 //Comment out to disable SD support
 #define SDSUPPORT 1
@@ -76,12 +76,12 @@ float min_constant_speed_units = 2; // the minimum units of an accelerated move 
 // units are in millimeters or whatever length unit you prefer: inches,football-fields,parsecs etc
 
 //Calibration variables
-float x_steps_per_unit = 80.376;
-float y_steps_per_unit = 80.376;
-float z_steps_per_unit = 3200/1.25;
-float e_steps_per_unit = 16;
-float max_feedrate = 200000; //mmm, acceleration!
-float max_z_feedrate = 120;
+float x_steps_per_unit = 105.52;
+float y_steps_per_unit = 105.52;
+float z_steps_per_unit = 105.52;
+float e_steps_per_unit = 117.25;
+float max_feedrate = 100; //mmm, acceleration!
+float max_z_feedrate = 100;
 
 //float x_steps_per_unit = 10.047;
 //float y_steps_per_unit = 10.047;
@@ -117,23 +117,21 @@ const bool INVERT_E_DIR = false;
 //#include "BedThermistorTable_200k.h"
 
 //Identical thermistors on heater and bed - use this if you have no heated bed or if the thermistors are the same on both:
-#include "ThermistorTable_200k.h"
-//#include "ThermistorTable_100k.h"
+//#include "ThermistorTable_200k.h"
+#include "ThermistorTable_100k.h"
 //#include "ThermistorTable_mendelparts.h"
 #define BNUMTEMPS NUMTEMPS
 #define bedtemptable temptable
 
 //Endstop Settings
 #define ENDSTOPPULLUPS 1
-const bool ENDSTOPS_INVERTING = false;
+const bool ENDSTOPS_INVERTING = true
 const bool min_software_endstops = false; //If true, axis won't move to coordinates less than zero.
 const bool max_software_endstops = true;  //If true, axis won't move to coordinates greater than the defined lengths below.
-const int X_MAX_LENGTH = 220;
-const int Y_MAX_LENGTH = 220;
-const int Z_MAX_LENGTH = 100;
+const int X_MAX_LENGTH = 40;
+const int Y_MAX_LENGTH = 40;
+const int Z_MAX_LENGTH = 40;
 
-#define BAUDRATE 115200
-
-
+#define BAUDRATE 19200
 
 #endif
