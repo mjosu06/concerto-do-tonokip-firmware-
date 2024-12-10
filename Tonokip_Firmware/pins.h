@@ -276,19 +276,19 @@
 
 #define Y_STEP_PIN          3
 #define Y_DIR_PIN           6
-#define Y_ENABLE_PIN        
+#define Y_ENABLE_PIN       X_ENABLE_PIN
 #define Y_MIN_PIN          10
 #define Y_MAX_PIN          -1
 
 #define Z_STEP_PIN          4
 #define Z_DIR_PIN           7
-#define Z_ENABLE_PIN        
+#define Z_ENABLE_PIN        X_ENABLE_PIN 
 #define Z_MIN_PIN          11
 #define Z_MAX_PIN          -1
 
 #define E_STEP_PIN         12
 #define E_DIR_PIN          13
-#define E_ENABLE_PIN       
+#define E_ENABLE_PIN       X_ENABLE_PIN
 
 #define SDPOWER            -1
 #define SDSS               -1

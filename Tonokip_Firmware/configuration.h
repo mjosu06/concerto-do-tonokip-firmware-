@@ -6,7 +6,7 @@
 #define MOTHERBOARD 4 // ATMEGA168 = 0, SANGUINO = 1, MOTHERBOARD = 2, MEGA/RAMPS = 3, ATMEGA328 = 4, Gen6 = 5, Sanguinololu = 6
 
 //Comment out to disable SD support
-#define SDSUPPORT 1
+//#define SDSUPPORT 1
 
 //Min step delay in microseconds. If you are experiencing missing steps, try to raise the delay microseconds, but be aware this
 // If you enable this, make sure STEP_DELAY_RATIO is disabled.
@@ -25,8 +25,8 @@
 //Acceleration settings
 #ifdef RAMP_ACCELERATION
 float min_units_per_second = 35.0; // the minimum feedrate
-long max_acceleration_units_per_sq_second = 750; // Max acceleration in mm/s^2 for printing moves
-long max_travel_acceleration_units_per_sq_second = 1500; // Max acceleration in mm/s^2 for travel moves
+long max_acceleration_units_per_sq_second = 300; // Max acceleration in mm/s^2 for printing moves
+long max_travel_acceleration_units_per_sq_second = 350; // Max acceleration in mm/s^2 for travel moves
 #endif
 #ifdef EXP_ACCELERATION
 float full_velocity_units = 10; // the units between minimum and G1 move feedrate
@@ -67,7 +67,7 @@ float min_constant_speed_units = 2; // the minimum units of an accelerated move 
 //#define HEATER_USES_MAX6675
 
 // Select one of these only to define how the bed temp is read.
-#define BED_USES_THERMISTOR
+//#define BED_USES_THERMISTOR
 //#define BED_USES_AD595
 
 // Calibration formulas
