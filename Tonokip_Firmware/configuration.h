@@ -41,7 +41,7 @@ float min_constant_speed_units = 2; // the minimum units of an accelerated move 
 
 //PID settings:
 //Uncomment the following line to enable PID support. This is untested and could be disastrous. Be careful.
-//#define PIDTEMP 1
+#define PIDTEMP 1
 #ifdef PIDTEMP
 #define PID_MAX 255 // limits current to nozzle
 #define PID_INTEGRAL_DRIVE_MAX 220
@@ -76,12 +76,12 @@ float min_constant_speed_units = 2; // the minimum units of an accelerated move 
 // units are in millimeters or whatever length unit you prefer: inches,football-fields,parsecs etc
 
 //Calibration variables
-float x_steps_per_unit = 105.52;
-float y_steps_per_unit = 105.52;
-float z_steps_per_unit = 105.52;
+float x_steps_per_unit = 14,0693333333;
+float y_steps_per_unit = 14,0693333333;
+float z_steps_per_unit = 26,38;
 float e_steps_per_unit = 117.25;
-float max_feedrate = 100; //mmm, acceleration!
-float max_z_feedrate = 100;
+float max_feedrate = 200; //mmm, acceleration!
+float max_z_feedrate = 300;
 
 //float x_steps_per_unit = 10.047;
 //float y_steps_per_unit = 10.047;
@@ -125,7 +125,7 @@ const bool INVERT_E_DIR = false;
 
 //Endstop Settings
 #define ENDSTOPPULLUPS 1
-const bool ENDSTOPS_INVERTING = true
+const bool ENDSTOPS_INVERTING = true;
 const bool min_software_endstops = false; //If true, axis won't move to coordinates less than zero.
 const bool max_software_endstops = true;  //If true, axis won't move to coordinates greater than the defined lengths below.
 const int X_MAX_LENGTH = 40;

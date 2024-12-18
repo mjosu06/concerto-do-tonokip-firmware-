@@ -260,7 +260,7 @@ void setup()
   if(X_MIN_PIN > -1) { pinMode(X_MIN_PIN,INPUT); digitalWrite(X_MIN_PIN,HIGH);}
   if(Y_MIN_PIN > -1) { pinMode(Y_MIN_PIN,INPUT); digitalWrite(Y_MIN_PIN,HIGH);}
   if(Z_MIN_PIN > -1) { pinMode(Z_MIN_PIN,INPUT); digitalWrite(Z_MIN_PIN,HIGH);}
-  if(X_MAX_PIN > -1) { pinMode(X_MAX_PIN,INPUT); digitalWrite(X_MAX_PIN,HIGH);}
+  //if(X_MAX_PIN > -1) { pinMode(X_MAX_PIN,INPUT); digitalWrite(X_MAX_PIN,HIGH);}
   if(Y_MAX_PIN > -1) { pinMode(Y_MAX_PIN,INPUT); digitalWrite(Y_MAX_PIN,HIGH);}
   if(Z_MAX_PIN > -1) { pinMode(Z_MAX_PIN,INPUT); digitalWrite(Z_MAX_PIN,HIGH);}
   #endif
@@ -271,9 +271,9 @@ void setup()
   if(E_ENABLE_PIN > -1) pinMode(E_ENABLE_PIN,OUTPUT);
 
   if(HEATER_0_PIN > -1) pinMode(HEATER_0_PIN,OUTPUT);
-  if(HEATER_1_PIN > -1) pinMode(HEATER_1_PIN,OUTPUT);
+  //if(HEATER_1_PIN > -1) pinMode(HEATER_1_PIN,OUTPUT);
   
-#ifdef HEATER_USES_MAX6675
+/*#ifdef HEATER_USES_MAX6675
   digitalWrite(SCK_PIN,0);
   pinMode(SCK_PIN,OUTPUT);
 
@@ -299,7 +299,7 @@ initsd();
 #endif
  
   
-}
+}*/
 
 
 void loop()
@@ -310,7 +310,7 @@ void loop()
 	get_command();
   
   if(buflen){
-#ifdef SDSUPPORT
+/*#ifdef SDSUPPORT
     if(savetosd){
         if(strstr(cmdbuffer[bufindr],"M29")==NULL){
             write_command(cmdbuffer[bufindr]);
@@ -326,7 +326,7 @@ void loop()
     }
 #else
     process_commands();
-#endif
+#endif*/
     buflen=(buflen-1);
     bufindr=(bufindr+1)%BUFSIZE;
     }

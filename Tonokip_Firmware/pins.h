@@ -297,7 +297,7 @@
 #define PS_ON_PIN          -1
 #define KILL_PIN           -1
 
-#define HEATER_0_PIN        A1
+#define HEATER_0_PIN        A1 //ou pino 15 digital 
 #define TEMP_0_PIN          A3 // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!!
 
 
